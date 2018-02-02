@@ -26,7 +26,6 @@
       </a>
     </div>
 
-
     {% if login %}
     <div class="header-right-item logout button">
       <a href="/paperzapper/user/logout/">
@@ -45,6 +44,12 @@
   </div>
 
   <div class="content">
+    {% if fail %}
+    <div class="fail" id="fail">
+      <b>{{ fail_message }}</b>
+    </div>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
   </div>
