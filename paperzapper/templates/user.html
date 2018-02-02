@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'paperzapper/css/user.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="button file-upload">
+  <a href="upload">
+    <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+    </svg> Add Paper
+  </a>
+</div>
+
+<div class="paper-container">
+  {% for paper in papers %}
+  <div class="paper">
+    <div class="title">{{ paper.title }}</div>
+
+    <div class="button">
+      <a href="{% static paper.get_static_download_path %}">
+        <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+        </svg> Download
+      </a>
+    </div>
+
+    <div class="button">
+      <a href="/paperzapper/user/paper/{{ paper.id }}">
+        <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.75 7L14 3.25l-10 10V17h3.75l10-10zm2.96-2.96c.39-.39.39-1.02 0-1.41L18.37.29c-.39-.39-1.02-.39-1.41 0L15 2.25 18.75 6l1.96-1.96z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M0 20h24v4H0z" fill-opacity=".36"/>
+        </svg> Edit
+      </a>
+    </div>
+
+    <div class="notes">
+      <p>Notes:</p>
+      <p>{{ paper.notes }}</p>
+    </div>
+
+    <div class="date">Upload at<b>{{ paper.upload_date }}</b></div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
