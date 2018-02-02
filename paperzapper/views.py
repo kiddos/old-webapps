@@ -11,8 +11,17 @@ from .models import User, Paper
 from .forms import PaperForm
 
 
+def check_login(request):
+  try:
+    if request.session['login']:
+      return True
+    else: return False
+  except:
+    return False
+
+
 def index(request):
-  if request.session and request.session['login']:
+  if check_login(request):
     return redirect('user')
   else:
     return render(request, 'index.html', {'login': False})
@@ -63,7 +72,7 @@ def logout(request):
 
 
 def user(request):
-  if request.session['login']:
+  if check_login(request):
     papers = Paper.objects.filter(user_id=request.session['user_id'])
     return render(request, 'user.html', {
       'papers': papers,
@@ -75,7 +84,7 @@ def user(request):
 
 
 def upload_file(request):
-  if request.session['login']:
+  if check_login(request):
     if request.method == 'POST':
       form = PaperForm(request.POST, request.FILES)
       if form.is_valid():
@@ -94,7 +103,7 @@ def upload_file(request):
 
 
 def edit_paper(request, paper_id=0):
-  if request.session['login']:
+  if check_login(request):
     if request.method == 'POST':
       p = Paper.objects.get(id=paper_id)
       p.title = request.POST['title']
