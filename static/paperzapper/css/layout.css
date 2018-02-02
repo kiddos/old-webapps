@@ -82,3 +82,9 @@ body, html {
   width: 100%;
   margin-top: 10px;
 }
+
+#fail {
+  margin: 10px;
+  color: red;
+  text-align: center;
+}
