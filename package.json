@@ -1,0 +1,25 @@
+{
+  "name": "webapps",
+  "version": "0.1.0",
+  "description": "kiddo's webapps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiddos/webapps.git"
+  },
+  "keywords": [
+    "webapps"
+  ],
+  "author": "kiddos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kiddos/webapps/issues"
+  },
+  "homepage": "https://github.com/kiddos/webapps#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
