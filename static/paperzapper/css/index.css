@@ -1,0 +1,37 @@
+.hint {
+  text-align: center;
+  margin: 30px;
+  color: #7944A3;
+  font-size: 20px;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.choice {
+  box-shadow: 0 0 10px #000;
+  display: inline-block;
+  width: 300px;
+  margin: 10px;
+  max-width: 100%;
+}
+
+.choice a {
+  text-decoration: none;
+}
+
+.choice .title {
+  font-size: 24px; 
+  background-color: #7944A3;
+  padding: 10px;
+  color: white;
+}
+
+.choice p {
+  padding: 10px;
+  font-size: 16px;
+  color: #7944A3;
+}
