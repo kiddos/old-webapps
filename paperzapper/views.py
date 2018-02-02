@@ -37,14 +37,22 @@ def login(request):
         password_sha256=sha256(request.POST['password']).hexdigest())
     except (KeyError, User.DoesNotExist):
       # Redisplay the question voting form.
-      return render(request, 'login.html', {'fail': True, 'login': False})
+      return render(request, 'login.html', {
+        'fail': True,
+        'login': False,
+        'fail_message': 'Invalid login',
+      })
     if user:
       request.session['login'] = True
       request.session['user_id'] = user.id
       request.session['username'] = user.username
       return redirect('user')
     else:
-      return render(request, 'login.html', {'fail': True, 'login': False})
+      return render(request, 'login.html', {
+        'fail': True,
+        'login': False,
+        'fail_message': 'Invalid login',
+      })
   else:
     return render(request, 'login.html', {'login': False})
 
