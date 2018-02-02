@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'paperzapper/css/upload.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="upload-form">
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" required>
+
+    <label for="document">Document:</label>
+    <input type="file" name="document" required>
+
+    <label for="notes">Notes:</label>
+    <textarea name="notes" cols="60" rows="16" required></textarea>
+
+    <input type="submit">
+  </form>
+
+</div>
+
+{% endblock %}
