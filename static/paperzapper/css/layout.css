@@ -1,0 +1,84 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  font-family: sans-serif;
+}
+
+.button {
+  padding: 5px;
+  border: solid 2px #573373;
+  display: inline-block;
+  background: #DBC4ED;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.button a {
+  text-decoration: none;
+  color: #573373;
+  display: flex;
+  align-items: center;
+}
+
+.button svg {
+  margin-right: 5px;
+}
+
+.button svg path:first-child {
+  fill: #573373;
+}
+
+.header {
+  color: white;
+  background-color: #7944A3;
+  padding: 20px 10px;
+  width: calc(100% - 20px);
+  height: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.header .header-left-item {
+  display: inline-block;
+}
+
+.header .title a {
+  color: white;
+  text-decoration: none;
+  user-select: none;
+}
+
+.title-text {
+  user-select: none;
+}
+
+.header .header-right-item {
+  display: inline-block;
+  float: right;
+}
+
+.header .logout {
+  margin: 0 10px;
+}
+
+.header .greetings {
+  margin-top: 3px;
+  font-size: 24px;
+}
+
+.header .greetings a {
+  color: white;
+  margin: 0 5px;
+}
+
+.content {
+  padding-top: 70px;
+  width: 100%;
+  margin-top: 10px;
+}
