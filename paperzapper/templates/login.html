@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'paperzapper/css/form.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="username">User name</label>
+    <input type="text" name="username">
+
+    <label for="password">Password</label>
+    <input type="password" name="password">
+
+    <input type="submit" value="login">
+  </form>
+</div>
+
+{% endblock %}
