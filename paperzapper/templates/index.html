@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static '/paperzapper/css/index.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="hint">
+  Paper Zapper is an App that manages the paper you read
+</div>
+
+<div class="choices">
+  <div class="choice">
+    <a href="login">
+      <div class="title">Login</div>
+      <p>Login with username and password, and start using Paper Zapper!!</p>
+    </a>
+  </div>
+
+  <div class="choice">
+    <a href="register">
+      <div class="title">Register</div>
+      <p>Register as a user of Paper Zapper!!</p>
+    </a>
+  </div>
+</div>
+
+{% endblock %}
