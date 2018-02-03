@@ -3,13 +3,13 @@
 
 {% block style %}
 
-<link rel="stylesheet" href="{% static 'paperzapper/css/upload.css' %}">
+<link rel="stylesheet" href="{% static 'paperzapper/css/paper_form.css' %}">
 
 {% endblock %}
 
 {% block content %}
 
-<div class="upload-form">
+<div class="paper-form">
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
