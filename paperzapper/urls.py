@@ -10,4 +10,6 @@ urlpatterns = [
   url(r'^user/upload', views.upload_file, name='uploads'),
   url(r'^user/logout', views.logout, name='logout'),
   url(r'^user/paper/(?P<paper_id>\d+)', views.edit_paper, name='edit_paper'),
+  url(r'^user/download/(?P<paper_id>\d+)', views.download_paper,
+    name='edit_paper'),
 ]
