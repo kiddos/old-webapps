@@ -1,22 +1,37 @@
 {% extends 'layout.html' %}
 {% load static %}
 
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'paperzapper/css/paper_form.css' %}">
+
+{% endblock %}
+
 {% block content %}
 
-<form method="POST">
-  {% csrf_token %}
+<div class="paper-form">
+  <form method="POST">
+    {% csrf_token %}
 
-  <label for="title">Title</label>
-  <input type="text" name="title" value="{{ paper.title }}">
+    <label for="title">Title</label>
+    <input type="text" name="title" value="{{ paper.title }}" required>
 
-  <label for="notes">Notes</label>
-  <textarea name="notes">{{ paper.notes }}</textarea>
+    <div class="button">
+      <a href="/paperzapper/user/download/{{ paper.id }}">
+        <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+        </svg> Download
+      </a>
+    </div>
 
-  <a href="{% static paper.get_static_download_path %}">Download</a>
+    <label for="notes">Notes</label>
+    <textarea name="notes"  cols="60" rows="16" required>{{ paper.notes }}</textarea>
 
-  <div>Upload at {{ paper.upload_date }}</div>
+    <div class="date">Upload at <b>{{ paper.upload_date }}</b></div>
 
-  <input type="submit" name="submit">
-</form>
+    <input type="submit" name="submit">
+  </form>
+</div>
 
 {% endblock %}
