@@ -142,7 +142,9 @@ def download_from_s3(paper):
     aws_access_key_id=ACCESS_KEY,
     aws_secret_access_key=SECRET_KEY)
 
-  with open(paper.document.url, 'wb') as fobj:
+  current_folder = os.path.dirname(os.path.realpath(__file__))
+  path = os.path.join(current_folder, '..', paper.document.url)
+  with open(path, 'wb') as fobj:
     s3.download_fileobj('kiddos-heroku-uploads',
       os.path.basename(paper.document.url), fobj)
 
