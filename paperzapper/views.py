@@ -138,7 +138,7 @@ def edit_paper(request, paper_id=0):
 
 
 def download_from_s3(paper):
-  s3 = boto3.resource('s3',
+  s3 = boto3.client('s3',
     aws_access_key_id=ACCESS_KEY,
     aws_secret_access_key=SECRET_KEY)
 
