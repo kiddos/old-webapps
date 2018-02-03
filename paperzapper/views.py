@@ -12,10 +12,6 @@ from .models import User, Paper
 from .forms import PaperForm
 
 
-ACCESS_KEY = 'AKIAJEG2NCV5BQM2YEAA'
-SECRET_KEY = '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'
-
-
 def check_login(request):
   try:
     if request.session['login']:
