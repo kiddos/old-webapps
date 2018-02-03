@@ -1,6 +1,7 @@
 .upload-form {
   display: flex;
   justify-content: center;
+  padding-bottom: 70px;
 }
 
 .upload-form form {
