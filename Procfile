@@ -1,1 +1,1 @@
-web: gunicorn webapps.wsgi --log-file -
+web: gunicorn webapps.wsgi -t 30 --log-file -
