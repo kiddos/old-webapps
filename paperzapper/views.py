@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from hashlib import sha256
 from time import time
-import boto3
 import os
 
 from django.http import HttpResponseRedirect
@@ -89,16 +88,6 @@ def user(request):
     return redirect('index')
 
 
-def upload_to_s3(paper):
-  s3 = boto3.client('s3',
-    aws_access_key_id=ACCESS_KEY,
-    aws_secret_access_key=SECRET_KEY)
-
-  with open(paper.document.url, 'rb') as fobj:
-    s3.upload_fileobj(fobj, 'kiddos-heroku-uploads',
-      os.path.basename(paper.document.url))
-
-
 def upload_file(request):
   if check_login(request):
     if request.method == 'POST':
@@ -106,7 +95,6 @@ def upload_file(request):
       if form.is_valid():
         form.instance.user_id = request.session['user_id']
         form.save()
-        upload_to_s3(form.instance)
         return redirect('user')
     else:
       form = PaperForm()
@@ -133,26 +121,5 @@ def edit_paper(request, paper_id=0):
         'login': True,
         'paper': p,
       })
-  else:
-    return redirect('index')
-
-
-def download_from_s3(paper):
-  s3 = boto3.client('s3',
-    aws_access_key_id=ACCESS_KEY,
-    aws_secret_access_key=SECRET_KEY)
-
-  current_folder = os.path.dirname(os.path.realpath(__file__))
-  path = os.path.join(current_folder, '..', paper.document.url)
-  with open(path, 'wb') as fobj:
-    s3.download_fileobj('kiddos-heroku-uploads',
-      os.path.basename(paper.document.url), fobj)
-
-
-def download_paper(request, paper_id=0):
-  if check_login(request):
-    p = Paper.objects.get(id=paper_id)
-    download_from_s3(p)
-    return redirect('/static/' + os.path.basename(p.document.url))
   else:
     return redirect('index')
