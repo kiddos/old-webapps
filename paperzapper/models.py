@@ -19,6 +19,7 @@ class Paper(models.Model):
   document = models.FileField(upload_to='papers/')
   notes = models.TextField()
   upload_date = models.DateTimeField(auto_now_add=True)
+  document_content = models.BinaryField(null=True)
 
   def get_static_download_path(self):
     return os.path.basename(self.document.url)
