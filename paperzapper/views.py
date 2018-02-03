@@ -84,6 +84,13 @@ def user(request):
     return redirect('index')
 
 
+def save_content(paper):
+  with open(paper.document.url, 'rb') as f:
+    content = f.read()
+    paper.document_content = content
+    paper.save()
+
+
 def upload_file(request):
   if check_login(request):
     if request.method == 'POST':
@@ -91,6 +98,8 @@ def upload_file(request):
       if form.is_valid():
         form.instance.user_id = request.session['user_id']
         form.save()
+
+        save_content(form.instance)
         return redirect('user')
     else:
       form = PaperForm()
@@ -117,5 +126,20 @@ def edit_paper(request, paper_id=0):
         'login': True,
         'paper': p,
       })
+  else:
+    return redirect('index')
+
+
+def retrieve_content(paper):
+  if not os.path.isfile(paper.document.url):
+    with open(paper.document.url, 'wb') as f:
+      f.write(paper.document_content)
+
+
+def download_paper(request, paper_id=0):
+  if check_login(request):
+    p = Paper.objects.get(id=paper_id)
+    retrieve_content(p)
+    return redirect('/static/' + p.get_static_download_path())
   else:
     return redirect('index')
