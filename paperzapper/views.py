@@ -150,7 +150,7 @@ def download_from_s3(paper):
 def download_paper(request, paper_id=0):
   if check_login(request):
     p = Paper.objects.get(id=paper_id)
-    download_paper(p)
+    download_from_s3(p)
     return redirect('/static/' + os.path.basename(p.document.url))
   else:
     return redirect('index')
