@@ -1,33 +1,33 @@
-.upload-form {
+.paper-form {
   display: flex;
   justify-content: center;
   padding-bottom: 70px;
 }
 
-.upload-form form {
+.paper-form form {
   width: 500px;
   max-width: 100%;
   display: grid;
 }
 
-.upload-form form label {
+.paper-form form label {
   grid-column-start: 1;
   grid-column-end: 2;
   margin: 10px;
 }
 
-.upload-form form input {
+.paper-form form input {
   grid-column-start: 2;
   grid-column-end: 3;
   margin: 12px;
 }
 
-.upload-form form label[for="notes"] {
+.paper-form form label[for="notes"] {
   grid-column-start: 1;
   grid-column-end: 3;
 }
 
-.upload-form form textarea {
+.paper-form form textarea {
   grid-column-start: 1;
   grid-column-end: 3;
   resize: none;
@@ -38,7 +38,7 @@
   overflow-y: scroll;
 }
 
-.upload-form form input[type="submit"] {
+.paper-form form input[type="submit"] {
   grid-column-start: 1;
   grid-column-end: 3;
   padding: 5px;
@@ -47,4 +47,19 @@
   background: #DBC4ED;
   border-radius: 5px;
   font-size: 20px;
+}
+
+.paper-form .button {
+  margin: 10px 0;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: block;
+}
+
+.paper-form .date {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: block;
+  font-size: 20px;
+  margin: 10px 0;
 }
